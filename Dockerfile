@@ -1,5 +1,5 @@
 # Specify the base image -- here we're using one that bundles the OpenJDK version of Java 8 on top of a generic Debian Linux OS
-FROM lambdastack/rust-ubuntu
+FROM rust:buster
 
 #Set the working directory to be used when the docker gets run
 WORKDIR /usr
