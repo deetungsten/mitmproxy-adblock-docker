@@ -13,11 +13,11 @@ RUN apt-get update \
   && ln -s /usr/bin/python3 python \
   && pip3 --no-cache-dir install --upgrade pip \
   && rm -rf /var/lib/apt/lists/*
-  
+
 RUN python -m pip install -U pip
 
 # Get Rust; NOTE: using sh for better compatibility with other base images
-RUN sudo apt-get install -y rustc
+RUN apt-get install -y rustc
 
 # RUN pip3 install mitmproxy
 
