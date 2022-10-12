@@ -22,11 +22,11 @@ RUN git clone https://github.com/deetungsten/mitmproxy-adblock-docker.git
 
 RUN cd mitmproxy-adblock-docker
 
-RUN pip install -r requirements.txt
+# RUN pip install -r requirements.txt
 
-RUN ./update-blocklists
+# RUN ./update-blocklists
 
-RUN ./go
+# RUN ./go
 
 # # Install the ggplot2 library and a few other dependencies we want to have available
 # RUN echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; options(repos = r);" > ~/.Rprofile
