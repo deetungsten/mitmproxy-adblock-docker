@@ -14,7 +14,7 @@ RUN apt-get update \
   && pip3 --no-cache-dir install --upgrade pip \
   && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get install -y build-essential libssl-dev libffi-dev python-dev
+RUN apt-get install -y python3-cffi
 
 RUN pip3 install mitmproxy
 
