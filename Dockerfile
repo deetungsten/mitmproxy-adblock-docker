@@ -7,6 +7,7 @@ WORKDIR /usr
 # Do a few updates of the base system and install R (via the r-base package)
 RUN apt-get update && apt-get upgrade -y
 
+RUN export CRYPTOGRAPHY_DONT_BUILD_RUST=1
 RUN pip3 install mitmproxy
 
 RUN git clone https://github.com/deetungsten/mitmproxy-adblock-docker.git
