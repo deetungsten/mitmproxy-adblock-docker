@@ -1,0 +1,1 @@
+docker build -t deetungsten/mitm-proxy-docker:dry_run .
