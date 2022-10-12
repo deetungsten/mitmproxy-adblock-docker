@@ -7,18 +7,26 @@ WORKDIR /usr
 # Do a few updates of the base system and install R (via the r-base package)
 RUN apt-get update && apt-get upgrade -y
 
-RUN  pip install --upgrade pip
+RUN python -m pip install -U pip
 
 # Get Rust; NOTE: using sh for better compatibility with other base images
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # Add .cargo/bin to PATH
 ENV PATH="/root/.cargo/bin:${PATH}"
+#RUN source "$HOME/.cargo/env"
 
 RUN pip3 install mitmproxy
 
 RUN git clone https://github.com/deetungsten/mitmproxy-adblock-docker.git
 
+RUN cd mitmproxy-adblock-docker
+
+RUN pip install -r requirements.txt
+
+RUN ./update-blocklists
+
+RUN ./go
 # # Install the ggplot2 library and a few other dependencies we want to have available
 # RUN echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; options(repos = r);" > ~/.Rprofile
 # RUN Rscript -e "install.packages('reshape')"
