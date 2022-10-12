@@ -7,6 +7,8 @@ WORKDIR /usr
 # Do a few updates of the base system and install R (via the r-base package)
 RUN apt-get update && apt-get upgrade -y
 
+RUN apt install rustc
+
 RUN pip3 install setuptools_rust docker-compose
 
 RUN pip3 install mitmproxy
