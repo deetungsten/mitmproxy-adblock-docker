@@ -1,5 +1,5 @@
 # Specify the base image -- here we're using one that bundles the OpenJDK version of Java 8 on top of a generic Debian Linux OS
-FROM rust:buster
+FROM rust:bullseye
 
 #Set the working directory to be used when the docker gets run
 WORKDIR /usr
@@ -17,6 +17,8 @@ RUN apt-get update \
 RUN apt-get install -y build-essential libssl-dev libffi-dev
 
 RUN pip3 install mitmproxy
+
+RUN pip3 install mitmproxy adblockparser pyre2
 
 RUN git clone https://github.com/deetungsten/mitmproxy-adblock-docker.git
 
