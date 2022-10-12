@@ -1,0 +1,1 @@
+docker run --rm -it --entrypoint bash deetungsten/mitm-proxy-docker:dry_run
