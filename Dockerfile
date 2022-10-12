@@ -1,12 +1,13 @@
 # Specify the base image -- here we're using one that bundles the OpenJDK version of Java 8 on top of a generic Debian Linux OS
-FROM mitmproxy/mitmproxy:latest
+FROM arm32v7/python:latest
 
 #Set the working directory to be used when the docker gets run
 WORKDIR /usr
 
 # Do a few updates of the base system and install R (via the r-base package)
-RUN apt-get update && \
-        apt-get upgrade -y && \
+RUN apt-get update && apt-get upgrade -y
+
+RUN pip3 install mitmproxy
 
 RUN git clone https://github.com/deetungsten/mitmproxy-adblock-docker.git
 
