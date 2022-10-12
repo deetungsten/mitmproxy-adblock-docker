@@ -1,5 +1,5 @@
 # Specify the base image -- here we're using one that bundles the OpenJDK version of Java 8 on top of a generic Debian Linux OS
-FROM arm32v7/python:latest
+FROM ubuntu:18.04
 
 #Set the working directory to be used when the docker gets run
 WORKDIR /usr
@@ -10,23 +10,19 @@ RUN apt-get update && apt-get upgrade -y
 RUN python -m pip install -U pip
 
 # Get Rust; NOTE: using sh for better compatibility with other base images
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+RUN sudo apt-get install -y rustc
 
-# Add .cargo/bin to PATH
-ENV PATH="/root/.cargo/bin:${PATH}"
-#RUN source "$HOME/.cargo/env"
+# RUN pip3 install mitmproxy
 
-RUN pip3 install mitmproxy
+# RUN git clone https://github.com/deetungsten/mitmproxy-adblock-docker.git
 
-RUN git clone https://github.com/deetungsten/mitmproxy-adblock-docker.git
+# RUN cd mitmproxy-adblock-docker
 
-RUN cd mitmproxy-adblock-docker
+# RUN pip install -r requirements.txt
 
-RUN pip install -r requirements.txt
+# RUN ./update-blocklists
 
-RUN ./update-blocklists
-
-RUN ./go
+# RUN ./go
 # # Install the ggplot2 library and a few other dependencies we want to have available
 # RUN echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; options(repos = r);" > ~/.Rprofile
 # RUN Rscript -e "install.packages('reshape')"
