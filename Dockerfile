@@ -1,5 +1,5 @@
 # Specify the base image -- here we're using one that bundles the OpenJDK version of Java 8 on top of a generic Debian Linux OS
-FROM rust:slim-buster
+FROM lambdastack/rust-ubuntu
 
 #Set the working directory to be used when the docker gets run
 WORKDIR /usr
@@ -14,7 +14,7 @@ RUN apt-get update \
   && pip3 --no-cache-dir install --upgrade pip \
   && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get install -y python3-cffi
+RUN apt-get install -y build-essential libssl-dev libffi-dev python-dev
 
 RUN pip3 install mitmproxy
 
