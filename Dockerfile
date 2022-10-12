@@ -7,9 +7,13 @@ WORKDIR /usr
 # Do a few updates of the base system and install R (via the r-base package)
 RUN apt-get update && apt-get upgrade -y
 
-RUN apt-get install -y rustc
+RUN  pip install --upgrade pip
 
-RUN pip3 install setuptools_rust docker-compose
+# Get Rust; NOTE: using sh for better compatibility with other base images
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+
+# Add .cargo/bin to PATH
+ENV PATH="/root/.cargo/bin:${PATH}"
 
 RUN pip3 install mitmproxy
 
