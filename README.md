@@ -10,7 +10,6 @@ Use this to block ads on your mobile device, or just monitor its traffic.
  2. Install required python modules:
 
 ```
-$ pip install 'Cython>=0.29.19,<1.0'  # for pyre2
 $ pip install -r requirements.txt
 ```
 
