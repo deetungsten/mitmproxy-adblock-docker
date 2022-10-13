@@ -4,6 +4,8 @@ FROM ubuntu:20.04
 #Set the working directory to be used when the docker gets run
 WORKDIR /usr
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y git
 
@@ -13,6 +15,6 @@ RUN git clone https://github.com/AdguardTeam/urlfilter
 
 WORKDIR /usr/urlfilter/cmd
 
-RUN apt install -y golang
+RUN apt-get install -y golang
 
 RUN go build -o adguard
