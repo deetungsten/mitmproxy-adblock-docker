@@ -4,7 +4,7 @@ FROM ubuntu:20.04
 #Set the working directory to be used when the docker gets run
 WORKDIR /usr
 
-RUN apt-get update && apt-get upgrade
+RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y git
 
 
