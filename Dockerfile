@@ -17,6 +17,23 @@ WORKDIR /usr/urlfilter/cmd
 
 RUN apt-get update && DEBIAN_FRONTEND="noninteractive" TZ="America/New_York" apt-get install -y tzdata
 
+RUN apt-get install -y golang-1.16
+
 RUN apt-get install -y golang
 
+RUN update-alternatives --install /usr/bin/go go /usr/lib/go-1.16/bin/go 10
+
 RUN go build -o adguard
+RUN openssl genrsa -out demo.key 2048
+RUN openssl req -new -x509 -key demo.key -out demo.crt -subj "/C=US/ST=NY/L=NY/O=homeadguard/OU=whome Department/CN="
+
+RUN apt-get install -y curl
+# CMD mkdir /tmp/docker/
+# CMD cp demo.crt /tmp/docker/
+
+# ./adguard -l 0.0.0.0 -p 8118\
+#           -c demo.crt\
+#           -k demo.key\
+#           -f adguard_base.txt\
+#           -f adguard_tracking_protection.txt\
+#           -f adguard_social.txt
