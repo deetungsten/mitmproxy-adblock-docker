@@ -28,7 +28,7 @@ RUN apt-get install -y cmake
 RUN apt-get install -y libre2-dev ninja-build
 RUN pip3 install Cython
 
-RUN https://github.com/andreasvc/pyre2
+RUN git clone https://github.com/andreasvc/pyre2
 
 WORKDIR /usr/pyre2
 
