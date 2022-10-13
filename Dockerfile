@@ -4,7 +4,7 @@ FROM rust:bullseye
 #Set the working directory to be used when the docker gets run
 WORKDIR /usr
 
-RUN sed -i '1i deb http://deb.debian.org/debian buster main' /etc/apt/sources.list
+
 
 # Do a few updates of the base system and install R (via the r-base package)
 RUN apt-get update && apt-get upgrade -y
@@ -21,8 +21,11 @@ RUN apt-get install -y build-essential libssl-dev libffi-dev
 RUN pip3 install mitmproxy
 
 
+RUN sed -i '1i deb http://deb.debian.org/debian buster main' /etc/apt/sources.list
 
 RUN apt-get install -y cmake
+RUN apt-get update
+
 # RUN pip3 install adblockparser pyre2
 
 RUN git clone https://github.com/deetungsten/mitmproxy-adblock-docker.git
