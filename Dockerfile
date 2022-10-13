@@ -28,6 +28,10 @@ RUN openssl genrsa -out demo.key 2048
 RUN openssl req -new -x509 -key demo.key -out demo.crt -subj "/C=US/ST=NY/L=NY/O=homeadguard/OU=whome Department/CN="
 
 RUN apt-get install -y curl
+
+RUN curl http://filters.adtidy.org/extension/android-content-blocker/filters/2.txt > adguard_base.txt
+RUN curl http://filters.adtidy.org/extension/android-content-blocker/filters/3.txt > adguard_tracking_protection.txt
+RUN curl http://filters.adtidy.org/extension/android-content-blocker/filters/4.txt > adguard_social.txt
 # CMD mkdir /tmp/docker/
 # CMD cp demo.crt /tmp/docker/
 

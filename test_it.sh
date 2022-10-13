@@ -1,1 +1,1 @@
-docker run --rm -it -p 8118:8118 --entrypoint bash deetungsten/mitm-proxy-docker:dry_run
+docker run --rm -it -p 8118:8118 -v ./temp:/tmp/docker --entrypoint bash deetungsten/mitm-proxy-docker:dry_run
