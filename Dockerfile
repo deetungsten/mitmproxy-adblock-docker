@@ -22,9 +22,10 @@ RUN pip3 install mitmproxy
 
 
 RUN sed -i '1i deb http://deb.debian.org/debian buster main' /etc/apt/sources.list
+RUN apt-get update
 
 RUN apt-get install -y cmake
-RUN apt-get update
+
 
 # RUN pip3 install adblockparser pyre2
 
