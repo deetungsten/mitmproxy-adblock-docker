@@ -15,6 +15,6 @@ RUN git clone https://github.com/AdguardTeam/urlfilter
 
 WORKDIR /usr/urlfilter/cmd
 
-RUN apt-get install -y golang
+# RUN apt-get install -y golang
 
-RUN go build -o adguard
+# RUN go build -o adguard
