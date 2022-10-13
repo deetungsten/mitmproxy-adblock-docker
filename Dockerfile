@@ -25,15 +25,22 @@ RUN sed -i '1i deb http://deb.debian.org/debian buster main' /etc/apt/sources.li
 RUN apt-get update
 
 RUN apt-get install -y cmake
+RUN apt-get install -y libre2-dev ninja-build
+RUN pip3 install Cython
 
+RUN https://github.com/andreasvc/pyre2
 
-# RUN pip3 install adblockparser pyre2
+WORKDIR /usr/pyre2
+
+RUN make install
+
+WORKDIR /usr
 
 RUN git clone https://github.com/deetungsten/mitmproxy-adblock-docker.git
 
-RUN cd mitmproxy-adblock-docker
+WORKDIR /usr/mitmproxy-adblock-docker
 
-# RUN pip install -r requirements.txt
+RUN pip3 install adblockparser
 
 # RUN ./update-blocklists
 
