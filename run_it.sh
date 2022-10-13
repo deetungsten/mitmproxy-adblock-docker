@@ -1,0 +1,1 @@
+docker run --rm -it -p 8118:8118 deetungsten/mitm-proxy-docker:dry_run ./update-blocklists && ./go
