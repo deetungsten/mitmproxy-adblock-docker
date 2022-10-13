@@ -4,6 +4,7 @@ FROM ubuntu:20.04
 #Set the working directory to be used when the docker gets run
 WORKDIR /usr
 
+RUN apt install -y git
 
 
 # Do a few updates of the base system and install R (via the r-base package)
